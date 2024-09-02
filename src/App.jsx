@@ -3,13 +3,18 @@
 /* eslint-disable react/prop-types */
 
 import * as THREE from "three";
-import imgg2 from "./assets/leo1.jpg";
-import imgg3 from "./assets/leo2.jpg";
-import imgg4 from "./assets/panquarto.jpg";
+import office1 from "./assets/leo1.jpg";
+import office2 from "./assets/leo2.jpg";
 import clara from "./assets/clara.jpg";
 import escura from "./assets/escura.jpg";
-import msmAmb1 from "./assets/msmamb1.jpg";
-import msmAmb2 from "./assets/msmamb2.jpg";
+import corredor1 from "./assets/corredor1.jpg";
+import corredor2 from "./assets/corredor2.jpg";
+import corredorcomextintor1 from "./assets/corredorcomextintor1.jpg";
+import corredorcomextintor2 from "./assets/corredorcomextintor2.jpg";
+import officevidro1 from "./assets/officevidro1.jpg";
+import officevidro2 from "./assets/officevidro2.jpg";
+import sacada1 from "./assets/sacada1.jpg";
+import sacada2 from "./assets/sacada2.jpg";
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import "./styles.css";
 import View360, { EquirectProjection } from "@egjs/react-view360";
@@ -21,6 +26,32 @@ function App() {
         offsetRight: 0,
         totalOffset: 0,
     });
+    const imagesPairs = [
+        {
+            i1: office1,
+            i2: office2,
+        },
+        {
+            i1: clara,
+            i2: escura,
+        },
+        {
+            i1: corredor1,
+            i2: corredor2,
+        },
+        {
+            i1: corredorcomextintor1,
+            i2: corredorcomextintor2,
+        },
+        {
+            i1: officevidro1,
+            i2: officevidro2,
+        },
+        {
+            i1: sacada1,
+            i2: sacada2,
+        },
+    ];
     const refLeft = useRef(null);
     const refRight = useRef(null);
     const refBtn = useRef(null);
@@ -34,9 +65,10 @@ function App() {
     const [wichIsControlling, setWichIsControlling] = useState(wich.none);
     const [isLoading, setIsLoading] = useState(false);
     const [test, setTest] = useState({
-        i1: clara,
-        i2: escura,
+        i1: office1,
+        i2: office2,
     });
+    const [imagesIndex, setImagesIndex] = useState(0);
     const projection = useMemo(
         () =>
             new EquirectProjection({
@@ -228,10 +260,16 @@ function App() {
                     }px)`,
                 }}
                 onClick={() => {
-                    setTest((prev) => ({
-                        i1: prev.i1 === clara ? imgg2 : clara,
-                        i2: prev.i1 === clara ? imgg3 : escura,
-                    }));
+                    let idxAux = imagesIndex;
+                    console.log("[IMGS INDEX]", imagesIndex, "[AUX]", idxAux);
+                    if (idxAux + 1 > imagesPairs.length - 1) {
+                        idxAux = 0;
+                    } else {
+                        idxAux = idxAux + 1;
+                    }
+                    console.log("[IMGS INDEX]", imagesIndex, "[AUX]", idxAux);
+                    setImagesIndex(idxAux);
+                    setTest(imagesPairs[idxAux]);
                 }}
             >
                 Mudar imagens teste
