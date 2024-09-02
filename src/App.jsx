@@ -1,8 +1,8 @@
 /* eslint-disable react/no-unknown-property */
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
+
 import * as THREE from "three";
-// import img1 from "./assets/IMG_20240620_103818_00_merged.jpg";
 import imgg2 from "./assets/leo1.jpg";
 import imgg3 from "./assets/leo2.jpg";
 import imgg4 from "./assets/panquarto.jpg";
@@ -10,22 +10,7 @@ import clara from "./assets/clara.jpg";
 import escura from "./assets/escura.jpg";
 import msmAmb1 from "./assets/msmamb1.jpg";
 import msmAmb2 from "./assets/msmamb2.jpg";
-import React, {
-    // Suspense,
-    // useCallback,
-    useEffect,
-    useMemo,
-    useRef,
-    useState,
-} from "react";
-// import {
-//     Canvas,
-//     extend,
-//     useFrame,
-//     useThree,
-//     useLoader,
-// } from "react-three-fiber";
-// import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
+import React, { useEffect, useMemo, useRef, useState } from "react";
 import "./styles.css";
 import View360, { EquirectProjection } from "@egjs/react-view360";
 import "@egjs/react-view360/css/view360.min.css";
